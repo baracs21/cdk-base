@@ -1,0 +1,29 @@
+# https://taskfile.dev
+
+version: '3'
+
+
+tasks:
+
+  check:
+    desc: checks the preconditions
+    dir: ./scripts
+    cmds:
+      - ./check.sh
+    silent: true
+
+  install-aws-nuke:
+    deps: [ check ]
+    desc: install aws nuke tool
+    dir: ./scripts
+    cmds:
+      - ./install-aws-nuke.sh
+    silent: true
+
+  nuke-aws-account:
+    deps: [ check ]
+    desc: nuke the aws account
+    dir: ./scripts
+    cmds:
+      - ./nuke-aws-account.sh {{.CLI_ARGS}}
+    silent: true
