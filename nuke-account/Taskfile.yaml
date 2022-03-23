@@ -2,6 +2,13 @@
 
 version: '3'
 
+vars:
+  AWS_ACCOUNT:
+    sh: echo $AWS_ACCOUNT_ID
+  AWS_PROFILE:
+    sh: echo $AWS_PROFILE
+  AWS_REGION:
+    sh: echo $AWS_REGION
 
 tasks:
 
@@ -12,7 +19,7 @@ tasks:
       - ./check.sh
     silent: true
 
-  install-aws-nuke:
+  install:
     deps: [ check ]
     desc: install aws nuke tool
     dir: ./scripts
@@ -20,10 +27,10 @@ tasks:
       - ./install-aws-nuke.sh
     silent: true
 
-  nuke-aws-account:
+  account:
     deps: [ check ]
     desc: nuke the aws account
     dir: ./scripts
     cmds:
-      - ./nuke-aws-account.sh {{.CLI_ARGS}}
+      - ./nuke-aws-account.sh {{.AWS_ACCOUNT}} {{.AWS_PROFILE}} {{.AWS_ALIAS}}
     silent: true
