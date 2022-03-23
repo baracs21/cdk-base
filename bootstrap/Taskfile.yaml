@@ -9,7 +9,7 @@ vars:
     sh: echo $AWS_PROFILE
   AWS_REGION:
     sh: echo $AWS_REGION
-  ACTIONS_FILE_PATH: ./scripts/actions.txt
+  ACTIONS_FILE_PATH: '{{.ACTIONS_FILE_PATH | default "./scripts/actions.txt"}}'
 
 tasks:
 
