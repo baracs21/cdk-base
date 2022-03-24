@@ -9,13 +9,14 @@ vars:
     sh: echo $AWS_PROFILE
   AWS_REGION:
     sh: echo $AWS_REGION
-  ACTIONS_FILE_PATH: '{{.ACTIONS_FILE_PATH | default "./scripts/actions.txt"}}'
 
 tasks:
 
   create-cdk-policy:
     desc: create the cdk policy with least privileges (configure actions.txt before!!!)
     dir: ./scripts
+    vars:
+      ACTIONS_FILE_PATH: '{{.ACTIONS_FILE_PATH | default "./scripts/actions.txt"}}'
     cmds:
       - ./create-policy.sh {{.AWS_ACCOUNT}} {{.AWS_PROFILE}} {{.ACTIONS_FILE_PATH}}
     silent: true
