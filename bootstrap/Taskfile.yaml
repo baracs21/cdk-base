@@ -12,7 +12,15 @@ vars:
 
 tasks:
 
+  check-preconditions:
+    desc: checks all preconditions
+    dir: ./scripts
+    cmds:
+      - ./pre-conditions.sh
+    silent: true
+
   create-cdk-policy:
+    deps: [ check-preconditions ]
     desc: create the cdk policy with least privileges (configure actions.txt before!!!)
     dir: ./scripts
     vars:
