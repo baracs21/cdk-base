@@ -3,7 +3,7 @@
 set -eo pipefail
 
 ENVS="AWS_ACCOUNT_ID AWS_PROFILE AWS_REGION"
-TOOLS="aws cdk jq"
+TOOLS="cdk npm"
 
 check_env_variables() {
   for env in $ENVS; do

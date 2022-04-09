@@ -2,10 +2,15 @@
 
 set -euo pipefail
 
-if ! task --version &>/dev/null; then
-  echo "please install task"
-  exit 1
-fi
+TOOLS="wget aws jq"
+
+check_tools() {
+  for tool in $TOOLS; do
+    if ! $tool --version &>/dev/null; then
+      echo "$tool not installed."
+    fi
+  done
+}
 
 check_env() {
   env=$1
@@ -18,3 +23,6 @@ check_env() {
 check_env AWS_ACCOUNT_ID
 check_env AWS_PROFILE
 check_env AWS_ALIAS
+check_env AWS_REGION
+
+check_tools

@@ -9,18 +9,20 @@ vars:
     sh: echo $AWS_PROFILE
   AWS_REGION:
     sh: echo $AWS_REGION
+  AWS_ALIAS:
+    sh: echo $AWS_ALIAS
 
 tasks:
 
-  check:
+  preconditions:
     desc: checks the preconditions
     dir: ./scripts
     cmds:
-      - ./check.sh
+      - ./pre-conditions.sh
     silent: true
 
   install:
-    deps: [ check ]
+    deps: [ preconditions ]
     desc: install aws nuke tool
     dir: ./scripts
     cmds:
@@ -28,7 +30,7 @@ tasks:
     silent: true
 
   account:
-    deps: [ check ]
+    deps: [ preconditions ]
     desc: nuke the aws account
     dir: ./scripts
     cmds:

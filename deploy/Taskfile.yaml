@@ -11,8 +11,17 @@ vars:
     sh: echo $AWS_REGION
 
 tasks:
+
+  preconditions:
+    dir: ./scripts
+    desc: checks all needed tools for the cdk deployment
+    cmds:
+      - chmod +x pre-conditions.sh && ./pre-conditions.sh
+    silent: true
+
   deploy:
     dir: ./infrastructure
+    deps: [ preconditions ]
     desc: synth and deploy the cdk application
     cmds:
       - rm -rf cdk.out
