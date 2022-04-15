@@ -21,7 +21,7 @@ tasks:
 
   deploy:
     dir: ./infrastructure
-    deps: [ preconditions ]
+#    deps: [ preconditions ]
     desc: synth and deploy the cdk application
     cmds:
       - rm -rf cdk.out
