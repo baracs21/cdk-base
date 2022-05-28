@@ -30,3 +30,9 @@ tasks:
       - CDK_DISABLE_STACK_TRACE=1 cdk synth --profile {{.AWS_PROFILE}}
       - cdk deploy --profile {{.AWS_PROFILE}}
     silent: true
+
+  create-default-vpc:
+    dir: ./cdk-base/common/scripts
+    desc: create a default vpc
+    cmds:
+      - chmod +x create-default-vpc.sh && ./create-default-vpc.sh
