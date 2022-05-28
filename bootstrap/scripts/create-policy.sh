@@ -7,7 +7,7 @@ AWS_PROFILE=$2
 ACTIONS_FILE_PATH=$3
 
 POLICY_NAME=cdk-exec-policy
-ACTIONS=$(cat "$ACTIONS_FILE_PATH")
+ACTIONS=$(jq -ncR '[inputs]' <<< cat "$ACTIONS_FILE_PATH")
 POLICY_DOCUMENT=role-policy.json
 
 create_policy_document() {
@@ -18,9 +18,8 @@ create_policy_document() {
   "Statement": [
     {
       "Effect": "Allow",
-      "Action": [
-        $ACTIONS
-      ],
+      "Action":
+        $ACTIONS,
       "Resource": "*"
     }
   ]

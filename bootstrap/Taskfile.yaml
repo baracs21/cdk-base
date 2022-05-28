@@ -21,10 +21,10 @@ tasks:
 
   create-cdk-policy:
     deps: [ check-preconditions ]
-    desc: create the cdk policy with least privileges (configure actions.txt before!!!)
+    desc: create the cdk policy with least privileges (configure actions before!!!)
     dir: ./scripts
     vars:
-      ACTIONS_FILE_PATH: '{{.ACTIONS_FILE_PATH | default "./scripts/actions.txt"}}'
+      ACTIONS_FILE_PATH: '{{.ACTIONS_FILE_PATH | default "./scripts/actions"}}'
     cmds:
       - ./create-policy.sh {{.AWS_ACCOUNT}} {{.AWS_PROFILE}} {{.ACTIONS_FILE_PATH}}
     silent: true

@@ -13,7 +13,7 @@ vars:
 tasks:
 
   preconditions:
-    dir: ./scripts
+    dir: ./cdk-base/common/scripts
     desc: checks all needed tools for the cdk deployment
     cmds:
       - chmod +x pre-conditions.sh && ./pre-conditions.sh
@@ -21,7 +21,7 @@ tasks:
 
   deploy:
     dir: ./infrastructure
-#    deps: [ preconditions ]
+    deps: [ preconditions ]
     desc: synth and deploy the cdk application
     cmds:
       - rm -rf cdk.out
