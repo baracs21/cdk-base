@@ -19,6 +19,12 @@ tasks:
       - chmod +x pre-conditions.sh && ./pre-conditions.sh
     silent: true
 
+  build:
+    dir: ./infrastructure
+    cmds:
+      - cdk synth
+    silent: true
+
   deploy:
     dir: ./infrastructure
     deps: [ preconditions ]
