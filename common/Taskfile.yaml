@@ -22,6 +22,7 @@ tasks:
   build:
     dir: ./infrastructure
     cmds:
+      - npm ci
       - cdk synth
     silent: true
 
