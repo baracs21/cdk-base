@@ -7,4 +7,3 @@ vpc:*
 ec2:*
 iam:*
 sts:*
-logs:*
